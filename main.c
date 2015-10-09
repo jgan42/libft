@@ -25,14 +25,6 @@ int	main(void)
 	ft_bzero(testmod, 10);
 	printf("%d\n", memcmp("\0\0\0\0\0\0\0\0\0*", testmod, 10));
 
-	printf("\nft_memset :\n");
-	testmod = strdup(test);
-	memset(testmod, 66, 9);
-	printf("'%s'//", testmod);
-	testmod = strdup(test);
-	ft_memset(testmod, 66, 9);
-	printf("'%s'\n", testmod);
-
 	printf("\nft_isalnum :\n");
 	printf("%d,%d,%d,%d,%d//", isalnum(75), isalnum(110), isalnum(49), isalnum(21), isalnum(94));
 	printf("%d,%d,%d,%d,%d\n", ft_isalnum(75), ft_isalnum(110), ft_isalnum(49), ft_isalnum(21), ft_isalnum(94));
@@ -54,9 +46,26 @@ int	main(void)
 	printf("%d,%d,%d,%d,%d,%d,%d\n", ft_isprint(32), ft_isprint(47), ft_isprint(51), ft_isprint(71), ft_isprint(115), isprint(127), isprint(9));
 
 	printf("\nft_itoa :\n");
-	printf("-546294//%s\n", ft_itoa(-546294, "lol", 10));
-	printf("42424242//%s\n", ft_itoa(42424242, "lol", 10));
-	printf("FF//%s\n", ft_itoa(255, "lol", 16));
-	printf("101010//%s\n", ft_itoa(7, "lo", 2));
+	printf("-546294//%s\n", ft_itoa(-546294));
+	printf("42424242//%s\n", ft_itoa(42424242));
+	printf("101010//%s\n", ft_itoa(101010));
+
+	printf("\nft_memccpy :\n");
+	testmod = strdup(test);
+	printf("%s|", (char *)memccpy(testmod, "qweMrtyu", 'M', 7));;
+	printf("%s//", testmod);
+	testmod = strdup(test);
+/*	printf("%s\n", (char *)*/ft_memccpy(testmod, "qwertyu", 'M', 7)/*);*/
+	printf("%s//", testmod);
+
+	printf("\nft_memset :\n");
+	testmod = strdup(test);
+	memset(testmod, 66, 9);
+	printf("'%s'//", testmod);
+	testmod = strdup(test);
+	ft_memset(testmod, 66, 9);
+	printf("'%s'\n", testmod);
+
+	printf("Non testes :\n ft_memalloc");
 	return (0);
 }
