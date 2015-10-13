@@ -7,5 +7,6 @@ void	*ft_memalloc(size_t size)
 	m = malloc(size);
 	if (!m)
 		return (0);
-	return (mem);
+	ft_bzero(m, size);
+	return (m);
 }

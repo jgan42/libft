@@ -3,10 +3,10 @@ char	*ft_strchr(const char *s, int c)
 	int		i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == c)
-			return (str + i);
+		if (s[i] == c)
+			return ((char *)s + i);
 		i++;
 	}
 	return (0);

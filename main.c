@@ -2,11 +2,30 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int	main(void)
+char	ftestc(char c)
+{
+	if (isalpha(c))
+		c += (c > 95 ? -32 : 32);
+	else if (isdigit(c))
+		c = '0';
+	return (c);
+}
+
+void	ftest(char *c)
+{
+	if (isalpha(c[0]))
+		c[0] += (c[0] > 95 ? -32 : 32);
+	else if (isdigit(c[0]))
+		c[0] = '0';
+}
+
+int	main(int ac, char **av)
 {
 	char *test;
 	char *testmod;
 
+	if (ac == 2 && av[1][0] == '1')
+		return (0);
 	test = "Pok3Mon* ~";
 	printf("------Main de correction Libft42------\n\nNom fonction :\nResultat attendu//Resultat de votre fonction\n");
 
@@ -15,7 +34,7 @@ int	main(void)
 	printf("%d//%d\n", atoi("2147483651lol"), ft_atoi("2147483651lol"));
 	printf("%d//%d\n", atoi("  +2147483648"), ft_atoi("  +2147483648"));
 	printf("%d//%d\n", atoi(" \n \t-2147483649"), ft_atoi(" \n \t-2147483649"));
-	printf("0//%d,%d,%d,%d,%d\n", ft_atoi("- +28"), ft_atoi("+-283 6"), ft_atoi("  --0123lol"), ft_atoi("  ++0123lol"), ft_atoi(" a 54"));
+	printf("0//%d,%d,%d,%d,%d,%d\n", ft_atoi("- +28"), ft_atoi("+-283 6"), ft_atoi("  --0123lol"), ft_atoi("  ++0123lol"), ft_atoi(""), ft_atoi(" a 54"));
 
 	printf("\nft_bzero :\n");
 	testmod = strdup(test);
@@ -47,16 +66,55 @@ int	main(void)
 
 	printf("\nft_itoa :\n");
 	printf("-546294//%s\n", ft_itoa(-546294));
-	printf("42424242//%s\n", ft_itoa(42424242));
+	printf("0//%s\n", ft_itoa(0));
 	printf("101010//%s\n", ft_itoa(101010));
 
 	printf("\nft_memccpy :\n");
 	testmod = strdup(test);
-	printf("%s|", (char *)memccpy(testmod, "qweMrtyu", 'M', 7));;
+	printf("%s|", (char *)memccpy(testmod, "qwertyu", 'L', 7));;
 	printf("%s//", testmod);
 	testmod = strdup(test);
-/*	printf("%s\n", (char *)*/ft_memccpy(testmod, "qwertyu", 'M', 7)/*);*/
+	printf("%s|", (char *)ft_memccpy(testmod, "qwertyu", 'L', 7));
+	printf("%s\n", testmod);
+	testmod = strdup(test);
+	printf("%s|", (char *)memccpy(testmod, "qwerLtyu", 'L', 7));;
 	printf("%s//", testmod);
+	testmod = strdup(test);
+	printf("%s|", (char *)ft_memccpy(testmod, "qwerLtyu", 'L', 7));
+	printf("%s\n", testmod);
+
+	printf("\nft_memchr :\n");
+	printf("%s.//", (char *)memchr(test, 'a', 10));;
+	printf("%s.\n", (char *)ft_memchr(test, 'a', 10));
+	printf("%s//", (char *)memchr(test, 'M', 10));;
+	printf("%s\n", (char *)ft_memchr(test, 'M', 10));
+
+	printf("\nft_memcmp :\n");
+	testmod = strdup(test);
+	printf("%d//", memcmp(test, test, 10));;
+	printf("%d\n", ft_memcmp(test, test, 10));
+	printf("%d//", memcmp(test, "lol", 4));;
+	printf("%d\n", ft_memcmp(test, "lol", 4));
+
+	printf("\nft_memcpy :\n");
+	testmod = strdup(test);
+	printf("%s//", (char *)memcpy(testmod, "qwertyu", 7));
+	testmod = strdup(test);
+	printf("%s\n", (char *)ft_memcpy(testmod, "qwertyu", 7));
+
+	printf("\nft_memmove :\n");
+	testmod = strdup(test);
+	printf("%s|", (char *)memmove(testmod + 3, testmod, 7));;
+	printf("%s//", testmod);
+	testmod = strdup(test);
+	printf("%s|", (char *)ft_memmove(testmod + 3, testmod, 7));
+	printf("%s\n", testmod);
+	testmod = strdup(test);
+	printf("%s|", (char *)memmove(testmod, testmod + 3, 7));
+	printf("%s//", testmod);
+	testmod = strdup(test);
+	printf("%s|", (char *)ft_memmove(testmod, testmod + 3, 7));
+	printf("%s\n", testmod);
 
 	printf("\nft_memset :\n");
 	testmod = strdup(test);
@@ -66,6 +124,96 @@ int	main(void)
 	ft_memset(testmod, 66, 9);
 	printf("'%s'\n", testmod);
 
-	printf("Non testes :\n ft_memalloc");
+	printf("\nft_putchar, ft_putendl, ft_putnbr, ft_putstr :\n");
+	ft_putchar('O');
+	ft_putendl("k si retour,");
+	ft_putnbr(-420420420);
+	ft_putstr(" Ca roule !\n");
+
+	printf("\nft_putchar_fd, ft_putendl_fd, ft_putnbr_fd, ft_putstr_fd :\n");
+	ft_putchar_fd('O', 1);
+	ft_putendl_fd("k si retour,", 1);
+	ft_putnbr_fd(-420420420, 1);
+	ft_putstr_fd(" Ca roule !\n", 1);
+
+	printf("\nft_strcat :\n");
+	testmod = strdup(test);
+	strcat(testmod, test);
+	printf("%s//", testmod);
+	testmod = strdup(test);
+	ft_strcat(testmod, test);
+	printf("%s\n", testmod);
+
+	printf("\nft_strchr :\n");
+	printf("%s.//", strchr(test, 'a'));;
+	printf("%s.\n", ft_strchr(test, 'a'));
+	printf("%s//", strchr(test, 'M'));;
+	printf("%s\n", ft_strchr(test, 'M'));
+
+	printf("\nft_strclr :\n");
+	testmod = strdup(test);
+	ft_strclr(testmod);
+	printf("10752//%d\n", memcmp("\0\0\0\0\0\0\0\0\0*", testmod, 10));
+
+	printf("\nft_strcmp :\n");
+	testmod = strdup(test);
+	printf("%d//%d\n", strcmp(test, testmod), ft_strcmp(test, testmod));
+	printf("%d//%d\n", strcmp(test, "Pok9"), ft_strcmp(test, "Pok9"));
+
+	printf("\nft_strcpy :\n");
+	testmod = strdup(test);
+	printf("%s//", strcpy(testmod, "qwert"));
+	testmod = strdup(test);
+	printf("%s\n", ft_strcpy(testmod, "qwert"));
+	testmod = strdup(test);
+	printf("%s//", strcpy(testmod, "qwertyuiopasd"));
+	testmod = strdup(test);
+	printf("%s\n", ft_strcpy(testmod, "qwertyuiopasd"));
+	testmod = strdup(test);
+	printf("%s|", strcpy(testmod + 3, testmod));;
+	printf("%s//", testmod);
+	testmod = strdup(test);
+	printf("%s|", ft_strcpy(testmod + 3, testmod));
+	printf("%s\n", testmod);
+	testmod = strdup(test);
+	printf("%s|", strcpy(testmod, testmod + 3));;
+	printf("%s//", testmod);
+	testmod = strdup(test);
+	printf("%s|", ft_strcpy(testmod, testmod + 3));
+	printf("%s\n", testmod);
+
+	printf("\nft_strdup :\n");
+	printf("%s//", strdup(test));
+	printf("%s\n", ft_strdup(test));
+
+	printf("\nft_strequ :\n");
+	testmod = strdup(test);
+	printf("1//%d\n", ft_strequ(test, testmod));
+	testmod[strlen(test)] = '*';
+	printf("0//%d\n", ft_strequ(test, testmod));
+
+	printf("\nft_striter :\n");
+	testmod = strdup(test);
+	ft_striter(testmod, ftest);
+	printf("pOK0mON* ~//%s\n", testmod);
+
+	printf("\nft_strjoin :\n");
+	testmod = strdup(test);
+	printf("%s%s//", testmod, test);
+	printf("%s\n", ft_strjoin(testmod, test));
+
+	printf("\nft_strlen :\n");
+	printf("%d//", (int)strlen("poikpoikpoikpoik"));
+	printf("%d\n", (int)ft_strlen("poikpoikpoikpoik"));
+	printf("%d//", (int)strlen(""));
+	printf("%d\n", (int)ft_strlen(""));
+
+	printf("\nft_strmap :\n");
+	testmod = strdup(test);
+	printf("pOK0mON* ~//%s\n", ft_strmap(testmod, ftestc));
+	printf("Pok3Mon* ~//%s\n", testmod);
+
+		printf("\nNon testes :\n ft_memalloc, ft_memdel, ft_strdel, ft_striteri, ft_strlcat, ft_strmapi\n");
+		printf("\nA verifier :\n ft_strjoin, ft_strdup, ft_strmap\n\n");
 	return (0);
 }

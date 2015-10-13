@@ -2,15 +2,11 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	c;
-	size_t	i;
+	char	*tmp;
 
-	i = 0;
-	while (src[i] != '\0' && i < n)
-	{
-		c = src[i];
-		dest[i] = c;
-		i++;
-	}
+	tmp = (char *)malloc(sizeof(char) * (n + 1));
+	tmp = ft_memcpy(tmp, src, n);
+	dest = ft_memcpy(dest, tmp, n);
+	free(tmp);
 	return (dest);
 }
