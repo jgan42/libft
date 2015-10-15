@@ -9,5 +9,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
+	if (c == 0 && s[i] == 0)
+		return ((char *)s + i);
 	return (0);
 }
