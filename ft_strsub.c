@@ -1,9 +1,9 @@
 #include "libft.h"
 
-char	*ft_strsub(char const *s, unsigned int start, sizet_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
-	int		i;
+	size_t	i;
 
 	str = (char *)malloc(len + 1);
 	if (!str)

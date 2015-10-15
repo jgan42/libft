@@ -12,7 +12,7 @@ char	*ft_strstr(const char *s1, const char *s2)
 			while (s1[i + j] == s2[j] && s2[j] != '\0')
 				j++;
 			if (s2[j] == '\0')
-				return (s2);
+				return ((char *)s2);
 		}
 		i++;
 	}

@@ -213,7 +213,21 @@ int	main(int ac, char **av)
 	printf("pOK0mON* ~//%s\n", ft_strmap(testmod, ftestc));
 	printf("Pok3Mon* ~//%s\n", testmod);
 
-		printf("\nNon testes :\n ft_memalloc, ft_memdel, ft_strdel, ft_striteri, ft_strlcat, ft_strmapi\n");
-		printf("\nA verifier :\n ft_strjoin, ft_strdup, ft_strmap\n\n");
+	printf("\nft_strncat :\n");
+	testmod = strdup(test);
+	strncat(testmod, test, 4);
+	printf("%s//", testmod);
+	testmod = strdup(test);
+	ft_strncat(testmod, test, 4);
+	printf("%s\n", testmod);
+
+	printf("\nft_strncmp :\n");
+	testmod = strdup(test);
+	printf("%d//%d\n", strncmp(test, testmod, 12), ft_strncmp(test, testmod, 12));
+	printf("%d//%d\n", strncmp(test, "Pok9", 3), ft_strncmp(test, "Pok9", 3));
+	printf("%d//%d\n", strncmp(test, "Pok9", 4), ft_strncmp(test, "Pok9", 4));
+
+	printf("\nNon testes :\n ft_memalloc, ft_memdel, ft_strdel, ft_striteri, ft_strlcat, ft_strmapi\n");
+	printf("\nA verifier :\n ft_strjoin, ft_strdup, ft_strmap\n\n");
 	return (0);
 }

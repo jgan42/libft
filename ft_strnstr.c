@@ -12,7 +12,7 @@ char	*ft_strnstr(char *s1, const char *s2, size_t n)
 		while (s1[i + j] == s2[j] && s2[j] != '\0' && j < n)
 			j++;
 		if (s2[j] == '\0' || j == n)
-			return (s2);
+			return ((char *)s2);
 		i++;
 	}
 	return (0);
