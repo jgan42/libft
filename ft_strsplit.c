@@ -44,6 +44,6 @@ char		**ft_strsplit(char const *s, char c)
 			j++;
 		}
 	}
-	tab[j] = '\0';
+	tab[j] = NULL;
 	return (tab);
 }
