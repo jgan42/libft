@@ -4,7 +4,7 @@ char	*ft_itoa(int n)
 {
 	char	*s;
 
-	if (n = -2147483648)
+	if (n == -2147483648)
 		return ("-2147483648");
 	s = (char *)malloc(sizeof(char) * 2);
 	if (!s)

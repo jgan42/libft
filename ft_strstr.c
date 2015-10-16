@@ -4,7 +4,7 @@ char	*ft_strstr(const char *s1, const char *s2)
 	int		j;
 
 	i = 0;
-	if (!s1 && !s2)
+	if (s1[0] == '\0' && s2[0] == '\0')
 		return ((char *)s1);
 	while (s1[i])
 	{
