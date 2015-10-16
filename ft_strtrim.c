@@ -11,10 +11,7 @@ char	*ft_strtrim(char const *s)
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 		i++;
 	if (!s[i])
-	{
-		*str = '\0';
-		return (str);
-	}
+		return ("");
 	j = ft_strlen(s) - 1;
 	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
 		j--;
