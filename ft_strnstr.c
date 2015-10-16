@@ -2,18 +2,14 @@
 
 char	*ft_strnstr(char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (s1[i] && i < n)
+	if (!(*s2))
+		return ((char *)s1);
+	if (!(*s1) || n == 0)
+			return (NULL);
+	if (*s1 == *s2)
 	{
-		j = 0;
-		while (s1[i + j] == s2[j] && s2[j] == '\0')
-			j++;
-		if (!s2[j])
-			return ((char *)s1 + i);
-		i++;
+		if (ft_strnstr(s1 + 1, s2 + 1, n - 1) - 1 == s1)
+			return ((char *)s1);
 	}
-	return (NULL);
+	return (ft_strnstr(s1 + 1, s2, n - 1));
 }
