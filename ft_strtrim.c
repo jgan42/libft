@@ -12,7 +12,7 @@ char	*ft_strtrim(char const *s)
 		i++;
 	if (!s[i])
 	{
-		*str == 0;
+		*str = '\0';
 		return (str);
 	}
 	j = ft_strlen(s) - 1;
