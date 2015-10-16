@@ -14,10 +14,7 @@ char	*ft_strtrim(char const *s)
 	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
 		j--;
 	if (j < i)
-	{
-		str[0] = '\0';
-		return (str);
-	}
+		return (NULL);
 	str = (char *)malloc(sizeof(char) * (j - i + 2));
 	k = 0;
 	while (k < j - i + 1)
