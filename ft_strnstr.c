@@ -9,7 +9,7 @@ char	*ft_strnstr(char *s1, const char *s2, size_t n)
 	while (s1[i])
 	{
 		j = 0;
-		while (s1[i + j] == s2[j] && s2[j] != '\0' && j < n)
+		while (s1[i + j] == s2[j] && j < n)
 			j++;
 		if (!s2[j] || j == n)
 			return ((char *)s1 + i);

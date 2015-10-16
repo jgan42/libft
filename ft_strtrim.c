@@ -10,14 +10,15 @@ char	*ft_strtrim(char const *s)
 	i = 0;
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 		i++;
-	j = ft_strlen(s) - 1;
+	j = (ft_strlen(s) ? ft_strlen(s) - 1 : 0);
 	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
 		j--;
 	if (j < i)
-		return (NULL);
+	{
+		str[0] = '\0';
+		return (str);
+	}
 	str = (char *)malloc(sizeof(char) * (j - i + 2));
-	if (!str)
-		return (0);
 	k = 0;
 	while (k < j - i + 1)
 	{
