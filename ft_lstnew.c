@@ -12,11 +12,14 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		new->content = malloc(content_size);
 		if (!new->content)
 			return (NULL);
-		ft_memcpy(new->content, content, content_size);
+		ft_memmove(new->content, content, content_size);
+		new->content_size = content_size;
 	}
 	else
+	{
 		new->content = NULL;
-	new->content_size = content_size;
+		new->content_size = 0;
+	}
 	new->next = NULL;
 	return (new);
 }
