@@ -8,7 +8,7 @@ char	*ft_itoa(int n)
 		return ("-2147483648");
 	s = (char *)malloc(sizeof(char) * 2);
 	if (!s)
-		return (0);
+		return (NULL);
 	if (n < 0)
 	{
 		s[0] = '-';
