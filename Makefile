@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/11/10 21:57:00 by jgan              #+#    #+#              #
+#    Updated: 2015/11/10 23:48:35 by jgan             ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 FLAG = -Wall -Wextra -Werror
 
 NAME = libft.a
@@ -63,7 +75,7 @@ SRC = ft_atoi.c \
 	ft_strstr.c \
 	ft_strsub.c \
 	ft_strtrim.c \
-	ft_swapint.c \
+	ft_swap.c \
 	ft_tolower.c \
 	ft_toupper.c
 

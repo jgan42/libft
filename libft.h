@@ -69,7 +69,7 @@ void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void	ft_lstaddend(t_list **alst, t_list *new);
-void	ft_swapint(int *a, int *b);
+void	ft_swap(int *a, int *b);
 char	*ft_strndup(const char *s, size_t n);
 char	**ft_strsplitstr(const char *s, const char *sep);
 void	ft_putstrtab(const char **tab, const char *sep);

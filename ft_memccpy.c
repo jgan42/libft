@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/11/10 22:23:05 by jgan              #+#    #+#             */
+/*   Updated: 2015/11/10 22:32:55 by jgan             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
@@ -12,9 +24,9 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	while (i < n)
 	{
 		dest1[i] = src1[i];
-		if (src1[i] == c)
+		if ((unsigned char)src1[i] == (unsigned char)c)
 			return ((char *)dest + i + 1);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
