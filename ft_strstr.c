@@ -1,3 +1,5 @@
+#include "libft.h"
+
 char	*ft_strstr(const char *s1, const char *s2)
 {
 	int		i;
@@ -15,5 +17,5 @@ char	*ft_strstr(const char *s1, const char *s2)
 			return ((char *)s1 + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
