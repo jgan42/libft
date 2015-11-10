@@ -77,7 +77,7 @@ $(NAME): $(OBJ)
 	@ranlib $(NAME)
 	@echo "NAME indexed"
 
-%.c: %.o
+%.o: %.c
 	@gcc $(FLAG) -c $< -o $@ 
 
 clean:
