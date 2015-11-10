@@ -56,7 +56,7 @@ let s:contentlen	= s:linelen - (3 * s:marginlen - 1) - strlen(s:asciiart[0])
 function s:trimlogin ()
 	let l:trimlogin = strpart($USER, 0, 9)
 	if strlen(l:trimlogin) == 0
-		let l:trimlogin = "marvin"
+		let l:trimlogin = "jgan"
 	endif
 	return l:trimlogin
 endfunction
@@ -64,7 +64,7 @@ endfunction
 function s:trimemail ()
 	let l:trimemail = strpart($MAIL, 0, s:contentlen - 16)
 	if strlen(l:trimemail) == 0
-		let l:trimemail = "mel-mouk@student.42.fr"
+		let l:trimemail = "jgan@student.42.fr"
 	endif
 	return l:trimemail
 endfunction
