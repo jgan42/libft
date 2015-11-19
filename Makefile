@@ -6,7 +6,7 @@
 #    By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/10 21:57:00 by jgan              #+#    #+#              #
-#    Updated: 2015/11/10 23:48:35 by jgan             ###   ########.fr        #
+#    Updated: 2015/11/19 16:24:25 by jgan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC = ft_atoi.c \
 	ft_isdigit.c \
 	ft_isprint.c \
 	ft_itoa.c \
+	ft_itoa_base.c \
 	ft_lstadd.c \
 	ft_lstaddend.c \
 	ft_lstdel.c \
