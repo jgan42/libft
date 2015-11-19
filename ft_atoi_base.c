@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static int	base_toi(char c, char *base)
+static int	base_toi(char c, const char *base)
 {
 	int		i;
 
