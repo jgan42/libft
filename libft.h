@@ -74,4 +74,5 @@ char	*ft_strndup(const char *s, size_t n);
 char	**ft_strsplitstr(const char *s, const char *sep);
 void	ft_putstrtab(const char **tab, const char *sep);
 void	ft_putinttab(int *tab, unsigned int len, const char *sep);
+int		ft_atoi_base(const char *str, const char *base);
 #endif

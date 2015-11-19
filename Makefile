@@ -15,6 +15,7 @@ FLAG = -Wall -Wextra -Werror
 NAME = libft.a
 
 SRC = ft_atoi.c \
+	ft_atoi_base.c \
 	ft_bzero.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
@@ -90,7 +91,7 @@ $(NAME): $(OBJ)
 	@echo "NAME indexed"
 
 %.o: %.c
-	@gcc $(FLAG) -c $< -o $@ 
+	@gcc $(FLAG) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
