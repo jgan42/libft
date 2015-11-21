@@ -6,7 +6,7 @@
 #    By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/10 21:57:00 by jgan              #+#    #+#              #
-#    Updated: 2015/11/19 16:24:25 by jgan             ###   ########.fr        #
+#    Updated: 2015/11/21 12:09:31 by jgan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = ft_atoi.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
 	ft_lstnew.c \
+	ft_lstsort.c \
 	ft_memalloc.c \
 	ft_memccpy.c \
 	ft_memchr.c \
@@ -49,6 +50,7 @@ SRC = ft_atoi.c \
 	ft_putstr.c \
 	ft_putstr_fd.c \
 	ft_putstrtab.c \
+	ft_straddc.c \
 	ft_strcat.c \
 	ft_strchr.c \
 	ft_strclr.c \
@@ -87,20 +89,20 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "NAME created"
+	@echo "libft.a created"
 	@ranlib $(NAME)
-	@echo "NAME indexed"
+	@echo "libft.a indexed"
 
 %.o: %.c
 	@gcc $(FLAG) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
-	@echo "OBJ deleted"
+	@echo "*.o deleted"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "NAME deleted"
+	@echo "libft.a deleted"
 
 re: fclean all
 
