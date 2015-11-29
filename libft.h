@@ -3,6 +3,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# define BUFF_SIZE 512
 
 typedef struct		s_list
 {
@@ -78,4 +79,5 @@ int		ft_atoi_base(const char *str, const char *base);
 char	*ft_itoa_base(int n, const char *base);
 char	*ft_straddc(char *s, char c, char lr);
 void	ft_lstsort(t_list **alst, int (*cmp)());
+int		ft_gnl(int fd, char **line);
 #endif

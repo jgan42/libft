@@ -6,7 +6,7 @@
 #    By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/10 21:57:00 by jgan              #+#    #+#              #
-#    Updated: 2015/11/21 12:09:31 by jgan             ###   ########.fr        #
+#    Updated: 2015/11/29 15:20:43 by jgan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME = libft.a
 SRC = ft_atoi.c \
 	ft_atoi_base.c \
 	ft_bzero.c \
+	ft_gnl.c \
 	ft_isalnum.c \
 	ft_isalpha.c \
 	ft_isascii.c \
