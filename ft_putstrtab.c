@@ -21,6 +21,6 @@ void	ft_putstrtab(char **tab, const char *sep)
 	{
 		ft_putstr(tab[i]);
 		ft_putstr(sep);
-		i++;
+		++i;
 	}
 }

@@ -21,20 +21,19 @@ char	*ft_strtrim(char const *s)
 
 	i = 0;
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
+		++i;
 	if (!s[i])
 		return ("");
 	j = ft_strlen(s) - 1;
 	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
-		j--;
-	str = (char *)malloc(sizeof(char) * (j - i + 2));
-	if (!str)
+		--j;
+	if (!(str = (char *)malloc(sizeof(char) * (j - i + 2))))
 		return (NULL);
 	k = 0;
 	while (k < j - i + 1)
 	{
 		str[k] = s[i + k];
-		k++;
+		++k;
 	}
 	str[k] = '\0';
 	return (str);

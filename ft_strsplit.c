@@ -6,7 +6,7 @@
 /*   By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 23:28:04 by jgan              #+#    #+#             */
-/*   Updated: 2015/11/10 23:39:34 by jgan             ###   ########.fr       */
+/*   Updated: 2015/12/10 17:31:38 by jgan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static int	nbwords(char const *s, char c)
 	while (s[i])
 	{
 		while (s[i] == c)
-			i++;
+			++i;
 		if (s[i])
-			nb++;
+			++nb;
 		while (s[i] && s[i] != c)
-			i++;
+			++i;
 	}
 	return (nb);
 }
@@ -38,22 +38,21 @@ char		**ft_strsplit(char const *s, char c)
 	int		j;
 	int		k;
 
-	tab = (char **)malloc(sizeof(char *) * (nbwords(s, c) + 1));
-	if (!tab)
+	if (!(tab = (char **)malloc(sizeof(char *) * (nbwords(s, c) + 1))))
 		return (NULL);
 	j = 0;
 	k = 0;
 	while (s[k])
 	{
 		while (s[k] == c)
-			k++;
+			++k;
 		i = k;
 		while (s[k] && s[k] != c)
-			k++;
+			++k;
 		if (k > i)
 		{
 			tab[j] = ft_strndup(s + i, k - i);
-			j++;
+			++j;
 		}
 	}
 	tab[j] = NULL;

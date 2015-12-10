@@ -22,7 +22,7 @@ char	*ft_strcat(char *dest, const char *src)
 	while (src[i])
 	{
 		dest[j + i] = src[i];
-		i++;
+		++i;
 	}
 	dest[j + i] = '\0';
 	return (dest);

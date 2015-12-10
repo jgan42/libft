@@ -21,6 +21,6 @@ void	ft_putinttab(int *tab, unsigned int len, const char *sep)
 	{
 		ft_putnbr(tab[i]);
 		ft_putstr(sep);
-		i++;
+		++i;
 	}
 }

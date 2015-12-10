@@ -26,9 +26,9 @@ static int	nb_line(const char *s, const char *sep)
 		while (!ft_strncmp(s + i, sep, len))
 			i += len;
 		if (s[i])
-			nb++;
+			++nb;
 		while (s[i] && ft_strncmp(s + i, sep, len))
-			i++;
+			++i;
 	}
 	return (nb);
 }
@@ -40,8 +40,7 @@ char		**ft_strsplitstr(const char *s, const char *sep)
 	int		k;
 	int		l;
 
-	tab = (char **)malloc(sizeof(char *) * (nb_line(s, sep) + 1));
-	if (!tab)
+	if (!(tab = (char **)malloc(sizeof(char *) * (nb_line(s, sep) + 1))))
 		return (NULL);
 	k = 0;
 	i = 0;
@@ -51,11 +50,11 @@ char		**ft_strsplitstr(const char *s, const char *sep)
 			i += ft_strlen(sep);
 		l = i;
 		while (s[i] && ft_strncmp(s + i, sep, ft_strlen(sep)))
-			i++;
+			++i;
 		if (i > l)
 		{
 			tab[k] = ft_strndup(s + l, i - l);
-			k++;
+			++k;
 		}
 	}
 	tab[k] = NULL;

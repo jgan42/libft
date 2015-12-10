@@ -21,7 +21,7 @@ static int	base_toi(char c, const char *base)
 	{
 		if (base[i] == c)
 			return (i);
-		i++;
+		++i;
 	}
 	return (-1);
 }
@@ -42,12 +42,12 @@ int			ft_atoi_base(const char *str, const char *base)
 	{
 		if (str[i] == '-')
 			sign = -1;
-		i++;
+		++i;
 	}
 	while (base_toi(str[i], base) != -1)
 	{
 		tot = tot * ft_strlen(base) + base_toi(str[i], base);
-		i++;
+		++i;
 	}
 	return (tot * sign);
 }

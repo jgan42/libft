@@ -20,6 +20,6 @@ void	ft_striter(char *s, void (*f)(char *))
 	while (s[i])
 	{
 		f(s + i);
-		i++;
+		++i;
 	}
 }

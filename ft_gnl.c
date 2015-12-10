@@ -27,7 +27,7 @@ static char	**add_tmp(char **tmp, int fd)
 			new[i] = ft_strdup(tmp[i]);
 		else
 			new[i] = ft_strnew(0);
-		i++;
+		++i;
 	}
 	new[i] = NULL;
 	return (new);
@@ -51,7 +51,7 @@ int			ft_gnl(int fd, char **line)
 	}
 	i = 0;
 	while (tmp[fd][i] && tmp[fd][i] != '\n')
-		i++;
+		++i;
 	*line = ft_strndup(tmp[fd], i);
 	tmp[fd] = ft_strdup(tmp[fd][i] ? tmp[fd] + i + 1 : tmp[fd] + i);
 	return (ret ? 1 : 0);

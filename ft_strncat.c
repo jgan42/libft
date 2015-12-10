@@ -22,7 +22,7 @@ char	*ft_strncat(char *dest, const char *src, size_t n)
 	while (src[i] && i < n)
 	{
 		dest[j + i] = src[i];
-		i++;
+		++i;
 	}
 	dest[j + i] = '\0';
 	return (dest);
