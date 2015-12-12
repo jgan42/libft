@@ -6,13 +6,13 @@
 /*   By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 22:17:48 by jgan              #+#    #+#             */
-/*   Updated: 2015/11/10 22:18:30 by jgan             ###   ########.fr       */
+/*   Updated: 2015/12/12 16:13:39 by jgan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
 	t_list	*tmp;
 
