@@ -1,72 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_gnl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 23:18:15 by jgan              #+#    #+#             */
-/*   Updated: 2015/11/29 15:20:08 by jgan             ###   ########.fr       */
+/*   Updated: 2015/12/23 17:45:02 by jgan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**add_tmp(char **tmp, int fd)
+static int	build_tmp(char ***tmp, int fd)
 {
 	char	**new;
+	char	**new2;
 	int		i;
 
-	new = (char **)malloc(sizeof(char *) * (fd + 2));
-	if (!new)
-		return (NULL);
+	new = *tmp;
 	i = 0;
+	while (new && new[i])
+		++i;
+	if (new && i > fd)
+		return (1);
+	if (!(new2 = (char **)malloc(sizeof(char *) * (fd + 2))))
+		return (0);
+	i = -1;
+	while (++i <= fd && new && new[i])
+		new2[i] = new[i];
 	while (i <= fd)
 	{
-		if (tmp && tmp[i])
-			new[i] = ft_strdup(tmp[i]);
-		else
-			new[i] = ft_strnew(0);
+		new2[i] = ft_strnew(0);
 		++i;
 	}
-	new[i] = NULL;
-	return (new);
+	new2[i] = NULL;
+	free(new);
+	*tmp = new2;
+	return (1);
 }
 
 int			ft_gnl(int fd, char **line)
 {
 	static char	**tmp = NULL;
+	static int	ret;
 	char		buf[BUFF_SIZE + 1];
-	int			ret;
+	char		*leaks;
 	int			i;
 
-	if (fd < 0 || !line || read(fd, buf, 0))
+	if (fd < 0 || !line || read(fd, buf, 0) || !build_tmp(&tmp, fd))
 		return (-1);
-	if (!tmp || !tmp[fd])
-		tmp = add_tmp(tmp, fd);
 	while (!ft_strchr(tmp[fd], '\n') && (ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		tmp[fd] = ft_strjoin(tmp[fd], buf);
+		leaks = ft_strjoin(tmp[fd], buf);
+		free(tmp[fd]);
+		tmp[fd] = leaks;
 	}
 	i = 0;
 	while (tmp[fd][i] && tmp[fd][i] != '\n')
-		++i;
-	*line = ft_strndup(tmp[fd], i);
+		i++;
+	*line = tmp[fd];
 	tmp[fd] = ft_strdup(tmp[fd][i] ? tmp[fd] + i + 1 : tmp[fd] + i);
-	return (ret ? 1 : 0);
+	(*line)[i] = '\0';
+	return (ret || tmp[fd][0] ? 1 : 0);
 }
-/*
-** Moulitest doesnt want my frees
-**line : "lines written"
-**27 :	"free(&tmp[i]);"
-**32 :	"if (tmp)
-**		free(tmp);"
-**35 :	"there was a strjoin with free(s1) before return"
-**39 :	"char		*noleaks;"
-**55 :	"instead of 'tmp[fd] =', 'noleaks ='"
-**		"free(tmp[fd]);
-**		tmp[fd] = noleaks;
-**		if (!ret)
-**			free(tmp[fd]);"
-*/

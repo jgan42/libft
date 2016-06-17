@@ -12,27 +12,38 @@
 
 #include "libft.h"
 
-char	*ft_itoa_base(int n, const char *base)
+static int	nbrlen(int n, const char *base)
+{
+	int		i;
+	int		b;
+
+	i = 1;
+	b = (int)ft_strlen(base);
+	while (n >= b)
+	{
+		n /= b;
+		i++;
+	}
+	return (i);
+}
+
+char		*ft_itoa_base(int n, const char *base)
 {
 	char	*s;
+	int		len;
 	int		i;
+	int		b;
 
-	i = ft_strlen(base);
-	s = (char *)malloc(sizeof(char) * 2);
-	if (!s)
+	len = nbrlen(n, base);
+	b = (int)ft_strlen(base);
+	if (!(s = ft_strnew(len)))
 		return (NULL);
-	if (n < 0)
+	i = 1;
+	while (n > 0)
 	{
-		s[0] = '-';
-		s[1] = '\0';
-		s = ft_strjoin(s, ft_itoa_base(-n, base));
-	}
-	else if (n >= i)
-		s = ft_strjoin(ft_itoa_base(n / i, base), ft_itoa_base(n % i, base));
-	else if (n < i && n >= 0)
-	{
-		s[0] = base[n];
-		s[1] = '\0';
+		s[len - i] = n % b + '0';
+		n /= b;
+		i++;
 	}
 	return (s);
 }

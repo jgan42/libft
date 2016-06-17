@@ -6,16 +6,17 @@
 #    By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/10 21:57:00 by jgan              #+#    #+#              #
-#    Updated: 2015/11/29 15:20:43 by jgan             ###   ########.fr        #
+#    Updated: 2016/02/29 13:48:48 by jgan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -O3
 
 NAME = libft.a
 
 SRC = ft_atoi.c \
 	ft_atoi_base.c \
+	ft_atoli.c \
 	ft_bzero.c \
 	ft_gnl.c \
 	ft_isalnum.c \
@@ -32,7 +33,6 @@ SRC = ft_atoi.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
 	ft_lstnew.c \
-	ft_lstsort.c \
 	ft_memalloc.c \
 	ft_memccpy.c \
 	ft_memchr.c \
@@ -41,6 +41,7 @@ SRC = ft_atoi.c \
 	ft_memdel.c \
 	ft_memmove.c \
 	ft_memset.c \
+	ft_printf.c \
 	ft_putchar.c \
 	ft_putchar_fd.c \
 	ft_putendl.c \
@@ -60,6 +61,7 @@ SRC = ft_atoi.c \
 	ft_strdel.c \
 	ft_strdup.c \
 	ft_strequ.c \
+	ft_strisnum.c \
 	ft_striter.c \
 	ft_striteri.c \
 	ft_strjoin.c \
@@ -79,27 +81,38 @@ SRC = ft_atoi.c \
 	ft_strsplitstr.c \
 	ft_strstr.c \
 	ft_strsub.c \
+	ft_strtablen.c \
 	ft_strtrim.c \
 	ft_swap.c \
 	ft_tolower.c \
-	ft_toupper.c
+	ft_toupper.c \
+\
+	checker.c \
+	info.c \
+	print_char.c \
+	print_int.c \
+	print_str.c \
+	print_uint.c \
+	print_float.c \
+	type_len.c \
 
 OBJ = $(SRC:.c=.o)
+
+COMMIT = fast_push
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "libft.a created"
 	@ranlib $(NAME)
-	@echo "libft.a indexed"
+	@echo "libft built & indexed"
 
 %.o: %.c
 	@gcc $(FLAG) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
-	@echo "*.o deleted"
+	@echo "libft .o deleted"
 
 fclean: clean
 	@rm -f $(NAME)
@@ -107,4 +120,9 @@ fclean: clean
 
 re: fclean all
 
+push: fclean
+	@git add --all
+	@git commit -m $(COMMIT)
+	@git push
+	
 .PHONY: all, clean, fclean, re

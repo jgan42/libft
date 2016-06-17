@@ -16,7 +16,8 @@ char	*ft_straddc(char *s, char c, char lr)
 {
 	char	*ret;
 
-	ret = (char *)malloc(sizeof(char) * 2);
+	if (!(ret = (char *)malloc(sizeof(char) * 2)))
+		return (NULL);
 	ret[0] = c;
 	ret[1] = '\0';
 	if (lr == 'l')

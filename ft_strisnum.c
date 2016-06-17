@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsort.c                                       :+:      :+:    :+:   */
+/*   ft_strisnum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/20 21:28:25 by jgan              #+#    #+#             */
-/*   Updated: 2015/12/12 16:14:00 by jgan             ###   ########.fr       */
+/*   Created: 2015/11/10 22:01:08 by jgan              #+#    #+#             */
+/*   Updated: 2015/11/10 22:03:13 by jgan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstsort(t_list **alst, int (*cmp)())
+int		ft_strisnum(char *s)
 {
-	t_list	*i;
-	t_list	*j;
-	void	*swap;
-	size_t	tmp;
+	int		i;
 
-	i = *alst;
-	while (i)
-	{
-		j = i->next;
-		while (j)
-		{
-			if ((*cmp)(i->content, j->content) > 0)
-			{
-				swap = i->content;
-				i->content = j->content;
-				j->content = swap;
-				tmp = i->content_size;
-				i->content_size = j->content_size;
-				j->content_size = tmp;
-			}
-			j = j->next;
-		}
-		i = i->next;
-	}
+	i = -1;
+	while (s[++i])
+		if (!ft_isdigit(s[i]))
+			return (0);
+	return (1);
 }

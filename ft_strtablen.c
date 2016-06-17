@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strtablen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/10 22:21:23 by jgan              #+#    #+#             */
-/*   Updated: 2015/11/10 22:22:57 by jgan             ###   ########.fr       */
+/*   Created: 2015/11/10 22:58:46 by jgan              #+#    #+#             */
+/*   Updated: 2015/12/24 14:25:28 by jgan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *data)
+size_t	ft_strtablen(char **s)
 {
-	t_list	*new;
+	size_t	i;
 
-	if (!(new = (t_list*)malloc(sizeof(t_list))))
-		return (NULL);
-	new->data = data;
-	new->next = NULL;
-	return (new);
+	i = 0;
+	while (s[i])
+		++i;
+	return (i);
 }
