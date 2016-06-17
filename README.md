@@ -1,6 +1,7 @@
 # 42school Project : C
 
 Build a custom library with standard libc functions on restricted conditions
+[Custom printf included]
 
 # libft
 
